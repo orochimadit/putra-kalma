@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="btn-group pull-right m-t-15">
-          <button class="btn btn-default waves-effect waves-light" data-toggle="modal" data-target="#modals-bank"><span class="m-l-5"><i class="fa fa-plus"></i></span>&nbsp;Tambah</button>
+        <a href="{{route('banks.create')}}" class="btn btn-default waves-effect waves-light"><span class="m-l-5"><i class="fa fa-plus"></i></span> Tambah</a>
 
           
         </div>
@@ -21,7 +21,49 @@
         </ol>
       </div>
     </div>
-    @livewire('banks')
+
+    
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card-box table-responsive">
+          <h4 class="m-t-0 header-title"><b>Data Perumahan</b></h4>
+          @if (session()->has('message'))
+        <div class="alert alert-success" style="margin-top:30px;">
+          {{ session('message') }}
+        </div>
+          @endif
+
+        <table id="datatable" class="table table-striped table-bordered datatable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+
+
+
+          <tbody>
+          @foreach($banks as $value)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $value->name }}</td>
+                <td>
+                  <a id="edit-data" name="ubah" href="{{route('banks.edit',$value->id)}}"  class="table-action-btn"><i class="md md-edit"></i></a>
+                  <form action="{{route('banks.destroy',$value->id)}}"  method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                        <button class="btn-danger" type="submit" class="dropdown-item" onclick="return confirm('Hapus Data?')"><i class="md md-close"></i></button>       
+                  </form>
+   
+                </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 

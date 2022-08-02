@@ -28,6 +28,7 @@ class BankController extends Controller
     public function create()
     {
         //
+        return view('admin.bank.create');
        
     }
 
@@ -39,7 +40,10 @@ class BankController extends Controller
      */
     public function store(StoreBankRequest $request)
     {
-        //
+        Bank::Create([
+            'name'   => $request->name
+         ]);
+         return redirect()->route('banks.index')->with('alert-success', 'Bank Berhasil ditambah.');
     }
 
     /**
@@ -61,7 +65,8 @@ class BankController extends Controller
      */
     public function edit(Bank $bank)
     {
-        //
+        
+        return view('admin.bank.edit', compact('bank'));
     }
 
     /**
@@ -73,7 +78,10 @@ class BankController extends Controller
      */
     public function update(UpdateBankRequest $request, Bank $bank)
     {
-        //
+        $bank->update([
+            'name'      => $request->name
+        ]);
+        return redirect()->route('banks.index')->with('alert-success', 'Bank berhasil diubah.');
     }
 
     /**
@@ -84,6 +92,11 @@ class BankController extends Controller
      */
     public function destroy(Bank $bank)
     {
-        //
+        try {
+            $bank->delete();
+        } catch (\Throwable $th) {
+            return back()->with('alert-danger',$th->getMessage());
+        }
+        return redirect()->route('kprs.index')->with('alert-success', 'Data berhasil dihapus');
     }
 }

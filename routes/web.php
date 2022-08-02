@@ -5,6 +5,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\HousingController;
 use App\Http\Controllers\LotController;
 use App\Http\Controllers\KprController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,11 +36,12 @@ Route::get('/coba',function(){
 Route::get('/dashboard',function(){
     return view('admin.dashboard.index');
 });
-Route::view('banks','admin.bank.index');
+// Route::view('banks','admin.bank.index');
 
 // Route::view('housings','admin.housing.index');
 Route::view('lots','admin.lot.index');
 Route::resource('housings',HousingController::class);
 Route::resource('lots',LotController::class);
 Route::resource('kprs',KprController::class);
+Route::resource('banks',BankController::class);
 // Route::resource('bank', BankController::class);
