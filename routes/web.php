@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\HousingController;
+use App\Http\Controllers\LotController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +39,5 @@ Route::view('banks','admin.bank.index');
 // Route::view('housings','admin.housing.index');
 Route::view('lots','admin.lot.index');
 Route::resource('housings',HousingController::class);
+Route::resource('lots',LotController::class);
 // Route::resource('bank', BankController::class);

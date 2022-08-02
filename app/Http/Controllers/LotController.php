@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lot;
 use App\Http\Requests\StoreLotRequest;
 use App\Http\Requests\UpdateLotRequest;
+use App\Models\Housing;
 
 class LotController extends Controller
 {
@@ -15,7 +16,8 @@ class LotController extends Controller
      */
     public function index()
     {
-        //
+        $lots = Lot::all();
+        return view('admin.lot.index',compact('lots'));
     }
 
     /**
@@ -25,7 +27,8 @@ class LotController extends Controller
      */
     public function create()
     {
-        //
+        $housings = Housing::all();
+        return view('admin.lot.create',compact('housings'));
     }
 
     /**
@@ -36,7 +39,15 @@ class LotController extends Controller
      */
     public function store(StoreLotRequest $request)
     {
-        //
+        Lot::Create([
+            'blok'   => $request->blok,
+             'surface_area' => $request->surface_area,
+             'price'    => $request->price,
+             'type' => $request->type,
+             'amount' => $request->amount,
+             'housing_id' => $request->housing_id
+         ]);
+         return redirect()->route('lots.index')->with('alert-success', 'Kaveling Berhasil ditambah.');;
     }
 
     /**
@@ -81,6 +92,11 @@ class LotController extends Controller
      */
     public function destroy(Lot $lot)
     {
-        //
+        try {
+            $lot->delete();
+        } catch (\Throwable $th) {
+            return back()->with('alert-danger',$th->getMessage());
+        }
+        return redirect()->route('lots.index')->with('alert-success', 'Data Berhasil berhasil dihapus');
     }
 }

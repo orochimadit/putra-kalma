@@ -28,7 +28,7 @@
             <a href="javascript:void(0);" class="waves-effect"><i class="ti-pencil-alt"></i><span> Data Master </span> <span class="menu-arrow"></span></a>
             <ul class="list-unstyled">
               <li><a href="{{route('housings.index')}}">Perumahan</a></li>
-              <li><a href="dashboard.php?page=kaveling">Kaveling</a></li>
+              <li><a href="{{route('lots.index')}}">Kaveling</a></li>
               <li><a href="#">Data Bank</a></li>
               <li><a href="dashboard.php?page=viewkpr">KPR</a></li>
               <li><a href="dashboard.php?page=viewadmin">Manajemen Staff</a></li>

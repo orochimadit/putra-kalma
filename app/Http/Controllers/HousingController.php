@@ -54,7 +54,8 @@ class HousingController extends Controller
             'surface_area' => $request->surface_area
         ]);
         $housings =Housing::all();
-        return view('admin.housing.index',compact('housings'));
+        return redirect()->route('housings.index',compact('housings'))->with('alert-success', 'Perumahan Berhasil ditambah.');
+        // return view('admin.housing.index',compact('housings'));
     }
 
     /**
