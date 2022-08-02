@@ -20,7 +20,7 @@ class CreateKprsTable extends Migration
             $table->string('bank_interest');
             $table->string('installment');
             $table->unsignedBigInteger('bank_id');
-
+            
             $table->timestamps();
             $table->foreign('bank_id')->references('id')->on('banks')->onUpdate('cascade')->onDelete('restrict');
         });

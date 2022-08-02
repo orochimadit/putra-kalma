@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Lot extends Model
 {
     use HasFactory;
+    protected $fillable = ['blok','surface_area','price','type','amount','housing_id'];
+
+
+    public function housing()
+    {
+        return $this->belongsTo(Housing::class);
+    }
+
 }

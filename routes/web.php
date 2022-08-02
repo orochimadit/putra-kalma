@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BankController;
+use App\Http\Controllers\HousingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test',function(){
+    return view('layouts.index');
+});
+
+Route::get('/home',function(){
+    return view('user.home');
+});
+
+Route::get('/coba',function(){
+    return view('admin.auth.login');
+});
+
+Route::get('/dashboard',function(){
+    return view('admin.dashboard.index');
+});
+Route::view('banks','admin.bank.index');
+
+// Route::view('housings','admin.housing.index');
+Route::view('lots','admin.lot.index');
+Route::resource('housings',HousingController::class);
+// Route::resource('bank', BankController::class);

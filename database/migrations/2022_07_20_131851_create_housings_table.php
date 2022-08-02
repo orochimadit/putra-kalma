@@ -19,9 +19,9 @@ class CreateHousingsTable extends Migration
             $table->string('image');
             $table->string('location');
             $table->string('type');
-            $table->string('amount');
+            $table->integer('amount');
             $table->string('technical_specifications');
-            $table->integer('surface_area');
+            $table->string('surface_area');
             $table->timestamps();
         });
     }

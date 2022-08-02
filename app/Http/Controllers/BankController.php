@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bank;
 use App\Http\Requests\StoreBankRequest;
 use App\Http\Requests\UpdateBankRequest;
+use Facade\FlareClient\View;
 
 class BankController extends Controller
 {
@@ -15,7 +16,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
+        $banks = Bank::all();
+        return view('admin.bank.index', compact('banks'));
     }
 
     /**
@@ -26,6 +28,7 @@ class BankController extends Controller
     public function create()
     {
         //
+       
     }
 
     /**

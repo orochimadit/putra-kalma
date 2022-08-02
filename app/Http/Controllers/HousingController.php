@@ -15,7 +15,8 @@ class HousingController extends Controller
      */
     public function index()
     {
-        //
+        $housings = Housing::all();
+        return view('admin.housing.index',compact('housings'));
     }
 
     /**
@@ -26,6 +27,7 @@ class HousingController extends Controller
     public function create()
     {
         //
+        return view('admin.housing.create');
     }
 
     /**
@@ -36,7 +38,23 @@ class HousingController extends Controller
      */
     public function store(StoreHousingRequest $request)
     {
-        //
+        if($request->file('image')){
+            $image_path = $request->file('image')
+            ->store('image_housing', 'public');
+            $img = $image_path;
+            }
+            $implode = implode(',', $request->type);
+       Housing::Create([
+           'name'   => $request->name,
+            'image'=>$img,
+            'location' => $request->location,
+            'type'      => $implode,
+            'amount'    => $request->amount,
+            'technical_specifications' => $request->technical_specifications,
+            'surface_area' => $request->surface_area
+        ]);
+        $housings =Housing::all();
+        return view('admin.housing.index',compact('housings'));
     }
 
     /**
@@ -81,6 +99,13 @@ class HousingController extends Controller
      */
     public function destroy(Housing $housing)
     {
-        //
+       //
+       try {
+        $housing->delete();
+    } catch (\Throwable $th) {
+        return back()->with('alert-danger',$th->getMessage());
+    }
+    return redirect()->route('housings.index')->with('alert-success', 'Data Berhasil berhasil dihapus');
+
     }
 }
