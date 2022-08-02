@@ -45,3 +45,6 @@ Route::resource('lots',LotController::class);
 Route::resource('kprs',KprController::class);
 Route::resource('banks',BankController::class);
 // Route::resource('bank', BankController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

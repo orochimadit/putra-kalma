@@ -29,8 +29,8 @@
             <ul class="list-unstyled">
               <li><a href="{{route('housings.index')}}">Perumahan</a></li>
               <li><a href="{{route('lots.index')}}">Kaveling</a></li>
-              <li><a href="#">Data Bank</a></li>
-              <li><a href="dashboard.php?page=viewkpr">KPR</a></li>
+              <li><a href="{{route('banks.index')}}">Data Bank</a></li>
+              <li><a href="{{route('kprs.index')}}">KPR</a></li>
               <li><a href="dashboard.php?page=viewadmin">Manajemen Staff</a></li>
               <li><a href="dashboard.php?page=viewmember">Manajemen Konsumen</a></li>
             </ul>
