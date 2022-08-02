@@ -47,7 +47,7 @@ class LotController extends Controller
              'amount' => $request->amount,
              'housing_id' => $request->housing_id
          ]);
-         return redirect()->route('lots.index')->with('alert-success', 'Kaveling Berhasil ditambah.');;
+         return redirect()->route('lots.index')->with('alert-success', 'Kaveling Berhasil ditambah.');
     }
 
     /**
