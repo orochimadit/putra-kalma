@@ -35,7 +35,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="dropdown"> 
-                <a href="index.php?page=home"  role="button" aria-expanded="false"> Home </a>
+                <a href="{{route('home')}}"  role="button" aria-expanded="false"> Home </a>
               </li>
               <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Perumahan <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu" role="menu">
@@ -46,21 +46,21 @@
               </li>
             </li>
             <li><a href="index.php?page=kpr">KPR</a></li>
-            <li><a href="index.php?page=panduan">Panduan</a></li>
-            <li><a href="index.php?page=profil">Profil Perusahaan</a></li>
-            <li><a href="index.php?page=contact">Dukungan</a></li>
-            <?php
+            <li><a href="{{route('panduan')}}">Panduan</a></li>
+            <li><a href="{{route('profile')}}">Profil Perusahaan</a></li>
+            <li><a href="{{route('contact')}}">Dukungan</a></li>
+          
 
-            if(isset($_SESSION['email'])){
-              echo '<li><a href="index.php?page=akun">Akun</i></a></li>';
-              echo '<li><a href="logout.php">Keluar</i></a></li>';
-              echo '<li><a href="index.php?page=proses">Transaksi</i></a></li>';
-            }
-            else{
-              echo '<li><a href="index.php?page=login">Masuk</i></a></li>';
-              echo '<li><a href="index.php?page=login">Daftar</i></a></li>';
-            }
-            ?>
+            @auth
+            <li><a href="index.php?page=akun">Akun</i></a></li>
+             <li><a href="logout.php">Keluar</i></a></li>
+              <li><a href="index.php?page=proses">Transaksi</i></a></li>
+            @endauth
+            @guest
+             <li><a href="{{route('login')}}">Masuk</i></a></li>
+             <li><a href="{{route('login')}}">Daftar</i></a></li>
+            @endguest
+            
 
           </ul>
         </div>

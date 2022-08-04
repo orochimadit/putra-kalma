@@ -19,7 +19,7 @@ use App\Http\Controllers\KonsumenController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.index');
 });
 
 Route::get('/test',function(){
@@ -50,4 +50,9 @@ Route::resource('konsumen',KonsumenController::class);
 // Route::resource('bank', BankController::class);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contact', [App\Http\Controllers\PenggunaController::class, 'contact'])->name('contact');
+Route::get('/home', [App\Http\Controllers\PenggunaController::class, 'home'])->name('home');
+Route::get('/profile', [App\Http\Controllers\PenggunaController::class, 'profile'])->name('profile');
+Route::get('/panduan', [App\Http\Controllers\PenggunaController::class, 'panduan'])->name('panduan');
+Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
