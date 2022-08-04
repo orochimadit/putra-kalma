@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Daftar Tipe</label>
                                 <div class="col-md-10">
-                                
+
                                     <select multiple="multiple" class="multi-select" id="daftar_tiperumah" name="type[]" data-plugin="multiselect">
                                         <option value="50">50</option>
                                         <option value="60">60</option>

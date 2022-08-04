@@ -5,7 +5,8 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\HousingController;
 use App\Http\Controllers\LotController;
 use App\Http\Controllers\KprController;
-
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\KonsumenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,8 @@ Route::resource('housings',HousingController::class);
 Route::resource('lots',LotController::class);
 Route::resource('kprs',KprController::class);
 Route::resource('banks',BankController::class);
+Route::resource('staff',StaffController::class);
+Route::resource('konsumen',KonsumenController::class);
 // Route::resource('bank', BankController::class);
 Auth::routes();
 
