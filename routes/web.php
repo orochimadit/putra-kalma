@@ -7,6 +7,7 @@ use App\Http\Controllers\LotController;
 use App\Http\Controllers\KprController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\KonsumenController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,7 @@ use App\Http\Controllers\KonsumenController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.index');
-});
+Route::get('/',[App\Http\Controllers\PenggunaController::class, 'home']);
 
 Route::get('/test',function(){
     return view('layouts.index');
@@ -34,9 +33,9 @@ Route::get('/coba',function(){
     return view('admin.auth.login');
 });
 
-Route::get('/dashboard',function(){
-    return view('admin.dashboard.index');
-});
+// Route::get('/dashboard',function(){
+//     return view('admin.dashboard.index');
+// });
 // Route::view('banks','admin.bank.index');
 
 // Route::view('housings','admin.housing.index');
@@ -56,3 +55,5 @@ Route::get('/home', [App\Http\Controllers\PenggunaController::class, 'home'])->n
 Route::get('/profile', [App\Http\Controllers\PenggunaController::class, 'profile'])->name('profile');
 Route::get('/panduan', [App\Http\Controllers\PenggunaController::class, 'panduan'])->name('panduan');
 Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
+Route::post('/authenticate', [App\Http\Controllers\PenggunaController::class, 'authenticate'])->name('authenticate');
+Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');

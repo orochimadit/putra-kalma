@@ -11,8 +11,9 @@
            <div class="col-md-6">
              <div class="grey-box"><!-- greay box -->
                <h2 class="tp-title">Silahkan Masuk</h2>
-               <form method="post" action="verify-login.php">
-                <!-- Text input-->
+               <form method="post" action="{{ route('authenticate') }}">
+               @csrf 
+               <!-- Text input-->
                 <div class="form-group">
                   <label class="control-label" for="email">E - mail</label>
 
