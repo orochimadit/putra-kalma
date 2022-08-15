@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Kpr;
 class PenggunaController extends Controller
 {
     //
@@ -32,6 +32,11 @@ class PenggunaController extends Controller
         return view('user.panduan');
     }
 
+    public function kpr()
+    {
+        $kprs = Kpr::all();
+        return view('user.kpr',compact('kprs'));
+    }
     public function login()
     {
        

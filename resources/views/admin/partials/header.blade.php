@@ -36,7 +36,16 @@
               <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
             </li>
             <li class="dropdown top-menu-item-xs">
-              <a href="logout.php" class="waves-effect waves-light"><i class="ti-power-off"> Keluar</i></a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+            
             </li>
           </ul>
         </div>

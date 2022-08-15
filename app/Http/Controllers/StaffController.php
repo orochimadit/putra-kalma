@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -40,9 +41,9 @@ class StaffController extends Controller
         $user=  User::Create([
             'name'   => $request->name,
             'email' => $request->email,
-            'password'    => $request->password,
+            'password'    => Hash::make($request->password),
             'address' => $request->address,
-            'phone_number' => $request->phone_number
+            'phone_number' => $request->phone_number,
         ]);
         $user->assignRole('Admin');
         return redirect()->route('staff.index')->with('alert-success', 'Staff Berhasil ditambah.');

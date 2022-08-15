@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class KonsumenController extends Controller
 {
@@ -40,7 +41,7 @@ class KonsumenController extends Controller
        $user=  User::Create([
             'name'   => $request->name,
             'email' => $request->email,
-            'password'    => $request->password,
+            'password'    => Hash::make($request->password),
             'address' => $request->address,
             'phone_number' => $request->phone_number
         ]);

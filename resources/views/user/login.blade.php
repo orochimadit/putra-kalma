@@ -11,7 +11,7 @@
            <div class="col-md-6">
              <div class="grey-box"><!-- greay box -->
                <h2 class="tp-title">Silahkan Masuk</h2>
-               <form method="post" action="{{ route('authenticate') }}">
+               <form method="post" action="{{ route('login') }}">
                @csrf 
                <!-- Text input-->
                 <div class="form-group">

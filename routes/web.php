@@ -25,9 +25,9 @@ Route::get('/test',function(){
     return view('layouts.index');
 });
 
-Route::get('/home',function(){
-    return view('user.home');
-});
+// Route::get('/home',function(){
+//     return view('user.home');
+// });
 
 Route::get('/coba',function(){
     return view('admin.auth.login');
@@ -48,12 +48,12 @@ Route::resource('staff',StaffController::class);
 Route::resource('konsumen',KonsumenController::class);
 // Route::resource('bank', BankController::class);
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\PenggunaController::class, 'contact'])->name('contact');
 Route::get('/home', [App\Http\Controllers\PenggunaController::class, 'home'])->name('home');
 Route::get('/profile', [App\Http\Controllers\PenggunaController::class, 'profile'])->name('profile');
 Route::get('/panduan', [App\Http\Controllers\PenggunaController::class, 'panduan'])->name('panduan');
+Route::get('/kpr', [App\Http\Controllers\PenggunaController::class, 'kpr'])->name('kpr');
 Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
 Route::post('/authenticate', [App\Http\Controllers\PenggunaController::class, 'authenticate'])->name('authenticate');
-Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
