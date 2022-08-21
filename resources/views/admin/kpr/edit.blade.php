@@ -70,9 +70,9 @@
                                 <div class="col-md-4">
                                     <select class="form-control" name="bank_interest">
                                         <option value="6,75%">6,75%</option>
-                                        <option value="5%">5%</option>
                                         <option value="3%">3%</option>
                                         <option value="4%">4%</option>
+                                        <option value="5%">5%</option>
                                     </select>
                                 </div>
                             </div>

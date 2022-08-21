@@ -47,6 +47,7 @@
 </head>
 <body>
 @include('partials.header',['housings' => \App\Models\Housing::all()])
+@include('alert')
 @yield('contents')
 @include('partials.footer')
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 

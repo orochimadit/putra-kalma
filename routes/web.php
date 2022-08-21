@@ -62,4 +62,6 @@ Route::post('/kaveling/pengajuan', [App\Http\Controllers\PenggunaController::cla
 Route::get('/invoice', [App\Http\Controllers\PenggunaController::class, 'invoice'])->name('invoice');
 Route::get('/akun', [App\Http\Controllers\PenggunaController::class, 'akun'])->name('akun');
 Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
+Route::get('/daftar', [App\Http\Controllers\PenggunaController::class, 'daftar'])->name('daftar');
+Route::post('/daftar', [App\Http\Controllers\PenggunaController::class, 'daftarStore'])->name('daftarStore');
 Route::post('/authenticate', [App\Http\Controllers\PenggunaController::class, 'authenticate'])->name('authenticate');

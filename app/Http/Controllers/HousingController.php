@@ -77,7 +77,7 @@ class HousingController extends Controller
      */
     public function edit(Housing $housing)
     {
-        //
+        return view('admin.housing.edit', compact('housing'));
     }
 
     /**
@@ -89,7 +89,23 @@ class HousingController extends Controller
      */
     public function update(UpdateHousingRequest $request, Housing $housing)
     {
-        //
+        if($request->file('image')){
+            $image_path = $request->file('image')
+            ->store('image_housing', 'public');
+            $img = $image_path;
+            }
+            $implode = implode(',', $request->type);
+        $housing->update([
+            'name'      => $request->name,
+            'image'=>$img,
+            'location' => $request->location,
+            'type'      => $implode,
+            'amount'    => $request->amount,
+            'technical_specifications' => $request->technical_specifications,
+            'surface_area' => $request->surface_area
+        ]);
+
+        return redirect()->route('housings.index')->with('alert-success', 'Perumahan berhasil diubah.');
     }
 
     /**

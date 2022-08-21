@@ -13,7 +13,7 @@ class UpdateHousingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateHousingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|min:3|max:255',
+            'location' =>'required',
+            'image'=>'required',
+            'type' =>'required',
+            'technical_specifications'=>'required',
+            'surface_area' =>'required'
         ];
     }
 }

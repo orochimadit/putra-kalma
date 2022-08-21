@@ -97,6 +97,6 @@ class BankController extends Controller
         } catch (\Throwable $th) {
             return back()->with('alert-danger',$th->getMessage());
         }
-        return redirect()->route('kprs.index')->with('alert-success', 'Data berhasil dihapus');
+        return redirect()->route('banks.index')->with('alert-success', 'Data berhasil dihapus');
     }
 }

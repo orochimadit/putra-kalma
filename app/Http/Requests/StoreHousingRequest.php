@@ -15,7 +15,7 @@ class StoreHousingRequest extends FormRequest
     {
         return true;
     }
-
+    // 'image','location','type','amount','technical_specifications','surface_area'
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +24,12 @@ class StoreHousingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|min:3|max:255',
+            'location'=>'required',
+            'image'=>'required',
+            'type' =>'required',
+            'technical_specifications'=>'required',
+            'surface_area' =>'required'
         ];
     }
 }

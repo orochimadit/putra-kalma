@@ -70,6 +70,7 @@ class LotController extends Controller
     public function edit(Lot $lot)
     {
         //
+        return view('admin.lot.edit', compact('lot'));
     }
 
     /**
@@ -81,7 +82,17 @@ class LotController extends Controller
      */
     public function update(UpdateLotRequest $request, Lot $lot)
     {
-        //
+     
+        $lot->update([
+            'blok'   => $request->blok,
+            'surface_area' => $request->surface_area,
+            'price'    => $request->price,
+            'type' => $request->type,
+            'amount' => $request->amount,
+            'housing_id' => $request->housing_id
+        ]);
+
+        return redirect()->route('lots.index')->with('alert-success', 'Kaveling berhasil diubah.');
     }
 
     /**

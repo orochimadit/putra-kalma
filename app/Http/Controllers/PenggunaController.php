@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Kpr;
 use App\Models\Lot;
 use App\Models\Sale;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
@@ -110,6 +112,22 @@ class PenggunaController extends Controller
 
     public function akun(){
         return view('user.akun');
+    }
+    public function daftar(){
+        return view('user.register');
+    }
+
+    public function daftarStore(Request $request)
+    {
+       $user=  User::Create([
+            'name'   => $request->name,
+            'email' => $request->email,
+            'password'    => Hash::make($request->password),
+            'address' => $request->address,
+            'phone_number' => $request->phone_number
+        ]);
+        $user->assignRole('User');
+        return redirect()->route('daftar')->with('alert-success', 'Berhasil Register.');
     }
     public function authenticate(Request $request)
     {

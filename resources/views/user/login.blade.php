@@ -43,7 +43,7 @@
              <h2>Belum Punya Akun? @ PT. Putra Kalma Raya</h2>
              <p>.</p>
          
-             <a href="" data-toggle="modal" data-target="#modals-register" class="btn tp-btn tp-btn-orange">Daftar Sekarang</a>
+             <a href="{{route('daftar')}}"   class="btn tp-btn tp-btn-orange">Daftar Sekarang</a>
            </div>
 
          </div>

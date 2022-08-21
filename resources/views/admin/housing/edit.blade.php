@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('contents')
-
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
@@ -23,20 +22,21 @@
                 <div class="row">
 
 
-                    <form action="{{route('housings.store')}}" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
+                    <form action="{{route('housings.update', $housing->id)}}" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
                         <div class="col-md-6 form-horizontal">
-                            @csrf
+                        @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="exampleFormControlInput1">Perumahan</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" name="name">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" name="name" value="{{$housing->name}}">
                                 </div>
                                 @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Lokasi</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="location" class="form-control">
+                                    <input type="text" name="location" class="form-control" value="{{$housing->location}}">
                                 </div>
                                 @error('location') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
@@ -74,7 +74,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Jumlah Kaveling</label>
                                 <div class="col-md-4">
-                                    <input id="demo3" type="text" value="" name="amount">
+                                    <input id="demo3" type="text" value="{{$housing->amount}}" name="amount">
 
                                 </div>
                                 @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Luas Tanah</label>
                                 <div class="col-md-9">
-                                    <input type="text" id="luastanah" name="surface_area" placeholder="" data-a-sign="M²" data-p-sign="s" class="form-control autonumber" placeholder="..">
+                                    <input type="text" id="luastanah" name="surface_area" placeholder="" data-a-sign="M²" value="{{$housing->surface_area}}" data-p-sign="s" class="form-control autonumber" placeholder="..">
                                 </div>
                                 @error('surface_area') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
@@ -91,6 +91,7 @@
                                 <div class="col-md-10">
                                     <input type="file" name="image" id="file" class="filestyle" data-buttonbefore="true">
                                 </div>
+                                <img src="{{asset('storage/'.$housing->image)}}" width="300px">
                                 @error('image') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="clearfix pull-right m-t-15">

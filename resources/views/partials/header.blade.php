@@ -70,7 +70,7 @@
             @endauth
             @guest
              <li><a href="{{route('login')}}">Masuk</i></a></li>
-             <li><a href="{{route('login')}}">Daftar</i></a></li>
+             <li><a href="{{route('daftar')}}">Daftar</i></a></li>
             @endguest
             
 
