@@ -68,7 +68,8 @@ class KprController extends Controller
      */
     public function edit(Kpr $kpr)
     {
-        //
+        $banks = Bank::all();
+        return view('admin.kpr.edit',compact('banks','kpr'));
     }
 
     /**
@@ -80,7 +81,15 @@ class KprController extends Controller
      */
     public function update(UpdateKprRequest $request, Kpr $kpr)
     {
-        //
+        $kpr->update([
+            'loan_amount'   => $request->loan_amount,
+            'range_time' => $request->range_time,
+            'bank_interest'    => $request->bank_interest,
+            'installment' => $request->installment,
+            'bank_id' => $request->bank_id
+        ]);
+
+        return redirect()->route('kprs.index')->with('alert-success', 'kprs berhasil diubah.');
     }
 
     /**

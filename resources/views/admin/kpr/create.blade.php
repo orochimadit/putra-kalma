@@ -37,6 +37,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @error('bank_id') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -45,6 +46,7 @@
                                         <input type="text" name="loan_amount" id="example-input3-group1" data-a-sign="Rp " name="pinjaman" class="form-control autonumber" placeholder="..">
                                         <span class="font-13 text-muted">Rupiah</span>
                                     </div>
+                                    @error('loan_amount') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -52,6 +54,7 @@
                                     <label for="field-1" class="col-md-2 control-label">Jangka Waktu</label>
                                     <div class="col-md-10">
                                         <select class="form-control" name="range_time">
+                                            <option label="Pilih Jangka Waktu"></option>
                                             <option value="10 Tahun">10 Tahun</option>
                                             <option value="11 tahun">11 Tahun</option>
                                             <option value="12 Tahun">12 Tahun</option>
@@ -61,6 +64,7 @@
                                             <option value="25 Tahun">25 Tahun</option>
                                         </select>
                                     </div>
+                                    @error('range_time') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                         </div>
@@ -69,16 +73,19 @@
                                 <label for="field-2" class="col-md-2 control-label">Bunga</label>
                                 <div class="col-md-4">
                                     <select class="form-control" name="bank_interest">
+                                        <option label="Pilih Bunga"></option>
                                         <option value="6,75%">6,75%</option>
                                         <option value="5%">5%</option>
                                         <option value="3%">3%</option>
                                         <option value="4%">4%</option>
                                     </select>
+                                    @error('bank_interest') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="field-3" class="col-md-2 control-label">Angsuran</label>
                                 <input type="text" class="form-control autonumber" data-a-sign="Rp " name="installment" id="field-3">
+                                @error('installment') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="clearfix pull-right m-t-15">

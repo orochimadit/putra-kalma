@@ -13,9 +13,9 @@ class UpdateKprRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
-
+// 'loan_amount','range_time','bank_interest','installment','bank_id'
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,6 +25,11 @@ class UpdateKprRequest extends FormRequest
     {
         return [
             //
+            'loan_amount'   =>'required',
+            'range_time'    =>'required',
+            'bank_interest' => 'required',
+            'installment'   => 'required',
+            'bank_id'       => 'required|exists:banks,id'
         ];
     }
 }

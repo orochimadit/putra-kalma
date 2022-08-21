@@ -24,7 +24,11 @@ class StoreKprRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'loan_amount'   =>'required',
+            'range_time'    =>'required',
+            'bank_interest' => 'required',
+            'installment'   => 'required',
+            'bank_id'       => 'required|exists:banks,id'
         ];
     }
 }
