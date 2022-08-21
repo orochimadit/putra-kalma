@@ -70,7 +70,8 @@ class LotController extends Controller
     public function edit(Lot $lot)
     {
         //
-        return view('admin.lot.edit', compact('lot'));
+        $housings = Housing::all();
+        return view('admin.lot.edit', compact('lot','housings'));
     }
 
     /**

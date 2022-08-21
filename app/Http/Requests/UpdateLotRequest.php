@@ -13,7 +13,7 @@ class UpdateLotRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateLotRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'blok'=>'required',
+            'surface_area'=>'required',
+            'type' =>'required',
+            'amount'=>'required',
+            'housing_id' =>'required|exists:housings,id'
         ];
     }
 }

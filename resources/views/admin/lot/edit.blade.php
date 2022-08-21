@@ -6,11 +6,11 @@
 <div class="row">
     <div class="col-sm-12">
 
-        <h4 class="page-title">Data Perumahan</h4>
+        <h4 class="page-title">Data Kaveling</h4>
         <ol class="breadcrumb">
             <li><a href="#">PT. Putra Kalma Raya</a></li>
             <li><a href="#">Data Master</a></li>
-            <li class="active">Create Perumahan</li>
+            <li class="active">Create Kaveling</li>
         </ol>
     </div>
 </div>
@@ -45,19 +45,27 @@
                                 </div>
                                 @error('blok') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
+                            <div class="form-group">
+                            <label class="col-md-2 control-label">Banyak</label>
+                                <div class="col-md-4">
+                                    <input type="text" value="" name="amount">
+
+                                </div>
+                                @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
                         </div>
                         <div class="col-md-6 form-horizontal">
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Luas Kaveling</label>
                                 <div class="col-md-9">
-                                    <input type="text" id="luastanah" name="surface_area" value="{{$lot->surface_area}} placeholder="" data-a-sign="M²" data-p-sign="s" class="form-control autonumber" placeholder="..">
+                                    <input type="text" id="luastanah" name="surface_area" value="{{$lot->surface_area}}" placeholder="" data-a-sign="M²" data-p-sign="s" class="form-control autonumber" placeholder="..">
                                 </div>
                                 @error('surface_area') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Type</label>
                                 <div class="col-md-4">
-                                    <input type="text" value="{{$lot->type}} name="type">
+                                    <input type="text" value="{{$lot->type}}" name="type">
 
                                 </div>
                                 @error('type') <span class="text-danger error">{{ $message }}</span>@enderror
@@ -66,17 +74,11 @@
                                 <label class="col-md-2 control-label">Harga Kaveling</label>
                                 <div class="input-group col-md-5">
                                     <span class="input-group-addon" id="format">Rp</span>
-                                    <input type="text" name="price" placeholder="" value="{{$lot->price}} class="form-control autonumber" data-a-sep="." data-a-dec=",">
+                                    <input type="text" name="price" placeholder="" value="{{$lot->price}}" class="form-control autonumber" data-a-sep="." data-a-dec=",">
                                 </div>
                                 @error('surface_area') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
-                            <label class="col-md-2 control-label">Banyak</label>
-                                <div class="col-md-4">
-                                    <input type="text" value="{{$lot->amount}} name="amount">
-
-                                </div>
-                                @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
-                            </div>
+                            
                             <div class="clearfix pull-right m-t-15">
                                 <button type="submit" class="btn btn-pink btn-rounded waves-effect waves-light">Submit</button>
                                 <button class="btn btn-secondary bd-0">Cancel</button>

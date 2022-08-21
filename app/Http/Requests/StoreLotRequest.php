@@ -15,7 +15,7 @@ class StoreLotRequest extends FormRequest
     {
         return true;
     }
-
+// 'blok','surface_area','price','type','amount','housing_id'
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +24,11 @@ class StoreLotRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'blok'=>'required',
+            'surface_area'=>'required',
+            'type' =>'required',
+            'amount'=>'required',
+            'housing_id' =>'required|exists:housings,id'
         ];
     }
 }

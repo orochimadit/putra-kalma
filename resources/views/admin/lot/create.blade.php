@@ -6,11 +6,11 @@
 <div class="row">
     <div class="col-sm-12">
 
-        <h4 class="page-title">Data Perumahan</h4>
+        <h4 class="page-title">Data Kaveling</h4>
         <ol class="breadcrumb">
             <li><a href="#">PT. Putra Kalma Raya</a></li>
             <li><a href="#">Data Master</a></li>
-            <li class="active">Create Perumahan</li>
+            <li class="active">Create Kaveling</li>
         </ol>
     </div>
 </div>
@@ -45,6 +45,14 @@
                                 </div>
                                 @error('blok') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
+                            <div class="form-group">
+                            <label class="col-md-2 control-label">Banyak</label>
+                                <div class="col-md-4">
+                                    <input type="text" value="" name="amount">
+
+                                </div>
+                                @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
                         </div>
                         <div class="col-md-6 form-horizontal">
                             <div class="form-group">
@@ -70,13 +78,7 @@
                                 </div>
                                 @error('surface_area') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
-                            <label class="col-md-2 control-label">Banyak</label>
-                                <div class="col-md-4">
-                                    <input type="text" value="" name="amount">
-
-                                </div>
-                                @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
-                            </div>
+                           
                             <div class="clearfix pull-right m-t-15">
                                 <button type="submit" class="btn btn-pink btn-rounded waves-effect waves-light">Submit</button>
                                 <button class="btn btn-secondary bd-0">Cancel</button>
