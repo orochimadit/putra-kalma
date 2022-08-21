@@ -14,7 +14,7 @@
     <div class="tp-header" id="tp-header">
       <div class="container">
         <div class="row">
-          <div class="col-md-4"> <a class="navbar-brand" href="index.html"><img src="images/ft-logo.png" alt="Peace Insurance Logo" class="img-responsive"></a> 
+          <div class="col-md-4"> <a class="navbar-brand" href="index.html"><img src="{{asset('images/ft-logo.png')}}" alt="Peace Insurance Logo" class="img-responsive"></a> 
           </div>
         </div>
 
@@ -39,9 +39,9 @@
               </li>
               <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Perumahan <i class="fa fa-angle-down"></i></a>
                 <ul class="dropdown-menu" role="menu">
-                  
-                    <li><a href="#">nama perumahan 1</a></li>
-                    <li><a href="#">nama perumahan 2</a></li>
+                @foreach($housings as $value)
+                    <li><a href="{{route('perumahan',$value->id)}}">{{$value->name}}</a></li>
+                @endforeach
                 </ul>
               </li>
             </li>

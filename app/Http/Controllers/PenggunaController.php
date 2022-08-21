@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Housing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kpr;
+use App\Models\Lot;
+use App\Models\Sale;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
+
 class PenggunaController extends Controller
 {
     //
@@ -43,6 +49,68 @@ class PenggunaController extends Controller
         return view('user.login');
     }
 
+    public function perumahan($id)
+    {
+        $housing = Housing::find($id);
+        return view('user.perumahan',compact('housing'));
+    }
+
+    public function pengajuanStore(Request $request)
+    {
+        if($request->file('ktp') && $request->file('npwp')){
+            $ktp_path = $request->file('ktp')
+            ->store('ktp_file', 'public');
+            $npwp_path = $request->file('npwp')
+            ->store('npwp_file', 'public');
+            $npwp = $npwp_path;
+            $ktp = $ktp_path;
+            }
+
+       $sale= Sale::Create([
+            'name'   => $request->name,
+            'payment_type' => $request->payment_type,
+            'transaction_date'    =>  Carbon::createFromFormat('d-m-Y', $request->date),
+            'ktp' => $ktp,
+            'npwp' => $npwp,
+            'status' => 'Diajukan',
+            'user_id'  => $request->user_id,
+            'housing_id'    => $request->housing_id,
+            'lot_id'        => $request->lot_id
+         ]);
+        // return $sale;
+        return redirect()->route('invoice')->with(['sale' => $sale]);
+        // return view('user.kaveling',compact('lots','housing'));
+    }
+
+    public function invoice(Sale $sale)
+    {       
+        //Session::get('sale');
+        // $sale = Sale::find($sale->id);
+        return view('user.invoice',compact('sale'));
+    }
+
+    public function pengajuan($id)
+    {
+        //$housing = Housing::find($id);
+        $lot = Lot::find($id);
+        //$lots = Lot::where('housing_id',$id)->get();
+       // dd($lot); 
+       $date = Carbon::now()->format('d-m-Y');
+
+         return view('user.transaksi',compact('lot','date'));
+    }
+
+    public function kaveling($id)
+    {
+        $housing = Housing::find($id);
+        $lots = Lot::where('housing_id',$id)->get();
+        //dd($lot); 
+         return view('user.kaveling',compact('lots','housing'));
+    }
+
+    public function akun(){
+        return view('user.akun');
+    }
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([

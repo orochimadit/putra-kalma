@@ -66,9 +66,10 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $staff)
     {
-        //
+        // $staff = User::find($id);
+        return view('admin.staff.edit',compact('staff'));
     }
 
     /**
@@ -78,9 +79,15 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,User $staff)
     {
-        //
+        $staff->update([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'phone_number' => $request->phone_number,
+            'address'       => $request->address
+        ]);
+        return redirect()->route('staff.index')->with('alert-success', 'Staff berhasil diubah.');
     }
 
     /**
@@ -89,8 +96,14 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $staff)
     {
-        //
+        try {
+            // $staff = User::find($id);
+            $staff->delete();
+        } catch (\Throwable $th) {
+            return back()->with('alert-danger',$th->getMessage());
+        }
+        return redirect()->route('staff.index')->with('alert-success', 'Data Berhasil berhasil dihapus');
     }
 }

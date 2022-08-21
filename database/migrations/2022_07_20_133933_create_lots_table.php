@@ -19,6 +19,7 @@ class CreateLotsTable extends Migration
             $table->string('surface_area');
             $table->string('type');
             $table->string('price');
+            $table->integer('amount');
             $table->unsignedBigInteger('housing_id');
             $table->timestamps();
 

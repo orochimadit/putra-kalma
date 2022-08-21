@@ -55,5 +55,11 @@ Route::get('/home', [App\Http\Controllers\PenggunaController::class, 'home'])->n
 Route::get('/profile', [App\Http\Controllers\PenggunaController::class, 'profile'])->name('profile');
 Route::get('/panduan', [App\Http\Controllers\PenggunaController::class, 'panduan'])->name('panduan');
 Route::get('/kpr', [App\Http\Controllers\PenggunaController::class, 'kpr'])->name('kpr');
+Route::get('/perumahan/{id}', [App\Http\Controllers\PenggunaController::class, 'perumahan'])->name('perumahan');
+Route::get('/perumahan/{id}/kaveling', [App\Http\Controllers\PenggunaController::class, 'kaveling'])->name('kaveling');
+Route::get('/kaveling/{id}/pengajuan', [App\Http\Controllers\PenggunaController::class, 'pengajuan'])->name('pengajuan');
+Route::post('/kaveling/pengajuan', [App\Http\Controllers\PenggunaController::class, 'pengajuanStore'])->name('pengajuanStore');
+Route::get('/invoice', [App\Http\Controllers\PenggunaController::class, 'invoice'])->name('invoice');
+Route::get('/akun', [App\Http\Controllers\PenggunaController::class, 'akun'])->name('akun');
 Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
 Route::post('/authenticate', [App\Http\Controllers\PenggunaController::class, 'authenticate'])->name('authenticate');

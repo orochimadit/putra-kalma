@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lot extends Model
 {
     use HasFactory;
-    protected $fillable = ['blok','surface_area','price','type','housing_id'];
+    protected $fillable = ['blok','surface_area','price','type','amount','housing_id'];
 
 
     public function housing()

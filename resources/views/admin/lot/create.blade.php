@@ -60,7 +60,7 @@
                                     <input type="text" value="" name="type">
 
                                 </div>
-                                @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
+                                @error('type') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Harga Kaveling</label>
@@ -70,7 +70,13 @@
                                 </div>
                                 @error('surface_area') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
+                            <label class="col-md-2 control-label">Banyak</label>
+                                <div class="col-md-4">
+                                    <input type="text" value="" name="amount">
 
+                                </div>
+                                @error('amount') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
                             <div class="clearfix pull-right m-t-15">
                                 <button type="submit" class="btn btn-pink btn-rounded waves-effect waves-light">Submit</button>
                                 <button class="btn btn-secondary bd-0">Cancel</button>
