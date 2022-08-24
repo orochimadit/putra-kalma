@@ -110,8 +110,8 @@
                 </div>
                 &nbsp; &nbsp;
                 <a href="{{route('bayar')}}"  name="tambah" class="btn  tp-btn tp-btn-blue">Pembayaran</a>
-                <a href="invoices.php" name="tambah" class="btn  tp-btn tp-btn-blue">Detail</a>
-                <a href="modal-hapus.php?id=#" data-toggle="modal" data-target="#modals-bayar" name="tambah" class="btn  tp-btn tp-btn-blue">Batal</a>
+             
+                <a href="{{route('home')}}"  name="tambah" class="btn  tp-btn tp-btn-blue">Batal</a>
 
               </div><!--panel-body-->
             </div><!--/.panel-collapse collapse in-->

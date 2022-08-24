@@ -47,11 +47,15 @@
                   <p>Tipe {{$value->type}}</p>
                   <p>Rp.{{$value->price}}</p>
                     <div class="form-group">
+                    @if($value->amount)
                     <a href="{{route('pengajuan',$value->id)}}" class="btn tp-btn tp-btn-orange">Proses</a>
+                    
                     <br><br>
-                    <a href="#" data-toggle="modal" data-target="#con-close-modal" id="#" class="btn tp-btn tp-btn-blue">Hitung KPR</a>
+                    <!-- <a href="#" data-toggle="modal" data-target="#con-close-modal" id="#" class="btn tp-btn tp-btn-blue">Hitung KPR</a> -->
                     </div>
+                    @else
                   <h3 style="color: red;">Terjual</h3>
+                  @endif
                     <br>
                     <br>
 

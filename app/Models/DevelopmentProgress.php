@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class DevelopmentProgress extends Model
 {
     use HasFactory;
+    protected $fillable = ['step','progress_date','target_completed','start_development','progres','user_id','sale_id'];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class);
+    }
 }

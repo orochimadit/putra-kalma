@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DevelopmentProgress;
+use App\Models\User;
+use App\Models\Sale;
 use App\Http\Requests\StoreDevelopmentProgressRequest;
 use App\Http\Requests\UpdateDevelopmentProgressRequest;
 
@@ -15,7 +17,15 @@ class DevelopmentProgressController extends Controller
      */
     public function index()
     {
-        //
+        $developmentProgress = DevelopmentProgress::all();
+        $users = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'User');
+            }
+        )->get();
+        $sales = Sale::all();
+        // return $users;
+        return view('admin.progress.index',compact('developmentProgress','users','sales'));
     }
 
     /**

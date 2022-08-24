@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use App\Models\Housing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -120,14 +121,21 @@ class PenggunaController extends Controller
     public function bayar(){
         $sale= Sale::where('user_id',Auth::user()->id)->get();
         //return $sale;
-         return view('user.bayar',compact('sale'));
+        $banks = Bank::all();
+         return view('user.bayar',compact('sale','banks'));
     }   
     public function bayarStore(Request $request){
+        if($request->file('proof') ){
+            $proof_path = $request->file('proof')
+            ->store('proof_file', 'public');
+            
+            $proof = $proof_path;
+            }
         $payment = Payment::create([
             'pay_type'  => $request->pay_type,
             'amount'    => $request->amount,
-            'date'      => $request->date,
-            'proof'     => $request->proof,
+            'date'      => Carbon::createFromFormat('d-m-Y', $request->date),
+            'proof'     => $proof,
             'bank_id'   => $request->bank_id,
             'status'    => 'Menunggu persetujuan',
             'sale_id'   => $request->sale_id,

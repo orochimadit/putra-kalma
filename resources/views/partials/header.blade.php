@@ -66,7 +66,7 @@
             
             </li> 
             <!-- <li><a href="logout.php">Keluar</i></a></li> -->
-              <li><a href="index.php?page=proses">Transaksi</i></a></li>
+              <!-- <li><a href="index.php?page=proses">Transaksi</i></a></li> -->
             @endauth
             @guest
              <li><a href="{{route('login')}}">Masuk</i></a></li>

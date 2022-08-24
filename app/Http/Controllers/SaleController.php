@@ -82,6 +82,11 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        //
+        try {
+            $sale->delete();
+        } catch (\Throwable $th) {
+            return back()->with('alert-danger',$th->getMessage());
+        }
+        return redirect()->route('sales.index')->with('alert-success', 'Data Berhasil berhasil dihapus');
     }
 }

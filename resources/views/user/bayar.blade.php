@@ -87,9 +87,9 @@
   <label class="control-label" for="lastname">Bank Tujuan</label>
   <select class="form-control" id="pelunasan" name="bank_id">
     <option value="Cash">pilih Bank Tujuan</option>
-    <option value="KPR">BRI</option>
-    <option value="KPR">BNI</option>
-    <option value="KPR">Mandiri</option>
+    @foreach($banks as $value)
+    <option value="{{$value->id}}">{{$value->name}}</option>
+    @endforeach
   </select>
 </div>  
 

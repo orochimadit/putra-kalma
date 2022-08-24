@@ -7,7 +7,9 @@ use App\Http\Controllers\LotController;
 use App\Http\Controllers\KprController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\KonsumenController;
+use App\Http\Controllers\DevelopmentProgressController;
 use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +50,12 @@ Route::resource('banks',BankController::class);
 Route::resource('staff',StaffController::class);
 Route::resource('konsumen',KonsumenController::class);
 Route::resource('sales',SaleController::class);
+Route::resource('payment',PaymentController::class);
+Route::resource('development-progress',DevelopmentProgressController::class);
 // Route::resource('bank', BankController::class);
 Auth::routes();
 Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\PenggunaController::class, 'contact'])->name('contact');
 Route::get('/home', [App\Http\Controllers\PenggunaController::class, 'home'])->name('home');
 Route::get('/profile', [App\Http\Controllers\PenggunaController::class, 'profile'])->name('profile');

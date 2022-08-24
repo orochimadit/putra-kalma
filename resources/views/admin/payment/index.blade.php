@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card-box table-responsive">
-          <h4 class="m-t-0 header-title"><b>Data Perumahan</b></h4>
+          <h4 class="m-t-0 header-title"><b>Data Penjualan</b></h4>
           @if (session()->has('message'))
         <div class="alert alert-success" style="margin-top:30px;">
           {{ session('message') }}
@@ -37,14 +37,12 @@
           <thead>
             <tr>
               <th>No</th>
-              
-              <th>Pembeli</th>
-              <th>Perumahan</th>
-              <th>Kaveling</th>
-              <th>Tipe Pembayaran</th>
-              <th>Tanggal Transaksi</th>
-              <th>ktp</th>
-              <th>npwp</th>
+            
+              <th>Jenis Bayar</th>
+              <th>Jumlah Bayar</th>
+              <th>Tanggal Tranfer</th>
+              <th>Bukti Transfer</th>
+              <th>Bank</th>
               <th>Status</th>
               <th>Aksi</th>
             </tr>
@@ -53,30 +51,27 @@
 
 
           <tbody>
-          @foreach($sales as $value)
+          @foreach($payments as $value)
             <tr>
                 <td>{{$loop->iteration}}</td>
                 
-                <td>{{ $value->user->name }}</td>
-                <td>{{ $value->housing->name }}</td>
-                <td>{{ $value->lot->blok }}</td>
-                <td>{{ $value->payment_type}}</td>
-                <td>{{ $value->transaction_date }}</td>
-                <td>
-                <a href="{{asset('storage/'.$value->ktp)}}" class="image-popup" title="Screenshot-4">
-                  <img src="{{asset('storage/'.$value->ktp)}}" class="thumb-sm" alt="work-thumbnail">
-                  </a>  </td>
-                <td><a href="{{asset('storage/'.$value->npwp)}}" class="image-popup" title="Screenshot-4">
-                  <img src="{{asset('storage/'.$value->npwp)}}" class="thumb-sm" alt="work-thumbnail">
+                <td>{{ $value->pay_type }}</td>
+                <td>{{ $value->amount }}</td>
+                <td>{{ $value->date }}</td>
+                <td> <a href="{{asset('storage/'.$value->proof)}}" class="image-popup" title="Screenshot-4">
+                  <img src="{{asset('storage/'.$value->proof)}}" class="thumb-sm" alt="work-thumbnail">
                   </a></td>
+                <td>{{ $value->bank->name }}</td>
                 <td>{{ $value->status }}</td>
                 <td>
-                  <form action="{{route('sales.destroy',$value->id)}}"  method="POST">
+                  <form action="{{route('payment.destroy',$value->id)}}"  method="POST">
                                   @csrf
                                   @method('DELETE')
                         <button class="btn-danger" type="submit" class="dropdown-item" onclick="return confirm('Hapus Data?')"><i class="md md-close"></i></button>       
                   </form>
-   
+                </td>
+                <td>
+                <a id="edit-data" name="ubah" href="{{route('payment.edit',$value->id)}}"  class="table-action-btn"><i class="md md-edit"></i></a>
                 </td>
             </tr>
             @endforeach

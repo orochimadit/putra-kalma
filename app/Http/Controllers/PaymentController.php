@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Sale;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 
@@ -15,7 +16,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payments = Payment::all();
+        return view('admin.payment.index',compact('payments'));
     }
 
     /**
@@ -81,6 +83,11 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        try {
+            $payment->delete();
+        } catch (\Throwable $th) {
+            return back()->with('alert-danger',$th->getMessage());
+        }
+        return redirect()->route('payment.index')->with('alert-success', 'Data Berhasil berhasil dihapus');
     }
 }

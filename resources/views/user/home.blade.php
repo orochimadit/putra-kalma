@@ -40,7 +40,7 @@
             <!-- /.section title-->
           </div>
           <div id="product">
-          @foreach($lots as $value)
+          @forelse($lots as $value)
             <div class="col-md-12 product-thumb item"> <!-- Product thumb-->
               <div class="grey-box">
               <h2><a href="#">Kaveling {{$value->blok}}</a></h2>
@@ -48,7 +48,11 @@
               <span class="icon"><i class="fa fa-home"></i></span>
             </div>
             </div>
-           @endforeach
+           @empty
+           <p>
+            Data Kosong
+           </p>
+           @endforelse
           </div>
 
         </div>

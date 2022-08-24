@@ -41,18 +41,18 @@
           </li>
 
           <li class="has_sub">
-            <a href="dashboard.php?page=pembayaran" class="waves-effect"><i class="ti-money"></i> <span> Pembayaran </span> </a>
+            <a href="{{route('payment.index')}}" class="waves-effect"><i class="ti-money"></i> <span> Pembayaran </span> </a>
           </li>
 
           <li class="has_sub">
-            <a href="view-laporan2.php" class="waves-effect"><i class="ti-archive"></i> <span> Laporan </span> </a>
+            <a href="#" class="waves-effect"><i class="ti-archive"></i> <span> Laporan </span> </a>
           </li>
 
           <li class="has_sub">
-            <a href="dashboard.php?page=penjualan" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Penjualan </span> </a>
+            <a href="#" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Penjualan </span> </a>
           </li>
           <li class="has_sub">
-            <a href="dashboard.php?page=progres" class="waves-effect"><i class="ti-home"></i> <span>Progres Pembagunan</span> </a>
+            <a href="#" class="waves-effect"><i class="ti-home"></i> <span>Progres Pembagunan</span> </a>
           </li>
 
 
