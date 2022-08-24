@@ -40,15 +40,15 @@
             <!-- /.section title-->
           </div>
           <div id="product">
-            
+          @foreach($lots as $value)
             <div class="col-md-12 product-thumb item"> <!-- Product thumb-->
               <div class="grey-box">
-              <h2><a href="index.php?page=perumahan">Kaveling '.$row['blok_kaveling'].'</a></h2>
-              <p style="color: #06502D">Perumahan '.$row['nama_perumahan'].'</p>
+              <h2><a href="#">Kaveling {{$value->blok}}</a></h2>
+              <p style="color: #06502D">Perumahan {{$value->housing->name}}</p>
               <span class="icon"><i class="fa fa-home"></i></span>
             </div>
             </div>
-           
+           @endforeach
           </div>
 
         </div>

@@ -26,14 +26,14 @@
      <div class="col-md-8">
        <div class="row">
          <div class="col-md-12">
-           <h1>nama depan nama belakang</h1>
+           <h1>{{Auth::user()->name}}</h1>
          </div>
          <div class="col-md-6">
 
            <div class="detail-block"><!-- detail block -->
             <h3><i class="fa fa-map-marker"></i>Alamat</h3>
             <ul>
-             <li>alamat</li>
+             <li>{{Auth::user()->address}}</li>
            </ul>
          </div><!-- /.detail block -->
 
@@ -41,14 +41,14 @@
 
          <div class="detail-block"><!-- detail block -->
           <h3><i class="fa fa-envelope"></i> E-mail</h3>
-          <p><a href="#">email</a></p>
+          <p><a href="#">{{Auth::user()->email}}</a></p>
         </div><!-- /.detail block -->
       </div>
 
       <div class="col-md-6">
        <div class="detail-block num-block"><!-- detail block -->
         <ul>
-         <li><i class="fa fa-phone"></i>no_telepon</li>
+         <li><i class="fa fa-phone"></i>{{Auth::user()->phone_number}}</li>
        </ul>
      </div><!-- /.detail block -->
 
@@ -91,23 +91,25 @@
                             </tr>
                           </thead>
                           <tbody>
+                          @foreach($sale as $value)
                            <tr>
-                            <td>no transaksi</td>
-                            <td>nama pembeli</td>
-                            <td>nama perumahan</td>
-                            <td>blok</td>
-                            <td>tanggal</td>
-                            <td>Rp. harga</td>
-                            <td>Jenis Pelunasan</td>
-                            <td>Status</td>
+                            <td>{{$value->id}}</td>
+                            <td>{{$value->user->name}}</td>
+                            <td>{{$value->housing->name}}</td>
+                            <td>{{$value->lot->blok}}</td>
+                            <td>{{$value->transaction_date}}</td>
+                            <td>Rp. {{$value->lot->price}}</td>
+                            <td>{{$value->payment_type}}</td>
+                            <td>{{$value->status}}</td>
                           </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
                   </form>
                 </div>
                 &nbsp; &nbsp;
-                <a href="modal-bayar.php?id=#" data-toggle="modal" data-target="#modals-bayar" name="tambah" class="btn  tp-btn tp-btn-blue">Pembayaran</a>
+                <a href="{{route('bayar')}}"  name="tambah" class="btn  tp-btn tp-btn-blue">Pembayaran</a>
                 <a href="invoices.php" name="tambah" class="btn  tp-btn tp-btn-blue">Detail</a>
                 <a href="modal-hapus.php?id=#" data-toggle="modal" data-target="#modals-bayar" name="tambah" class="btn  tp-btn tp-btn-blue">Batal</a>
 
@@ -244,7 +246,10 @@
 </div><!-- /.modal -->
 
 @endsection
-<script src="admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<scxript src="admin/assets/plugins/timepicker/bootstrap-timepicker.js"></script>
-<script src="admin/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<script src="admin/assets/plugins/bootstrap-datepicker/datepicker.js"></script>
+
+@push('script')
+<script src="{{asset('admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('admin/assets/plugins/timepicker/bootstrap-timepicker.js')}}"></script>
+<script src="{{asset('admin/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
+<script src="{{asset('admin/assets/plugins/bootstrap-datepicker/datepicker.js')}}"></script>
+@endpush

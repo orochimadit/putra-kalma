@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kpr;
 use App\Models\Lot;
+use App\Models\Payment;
 use App\Models\Sale;
 use App\Models\User;
 use Carbon\Carbon;
@@ -30,8 +31,8 @@ class PenggunaController extends Controller
 
     public function home()
     {
-       
-        return view('user.home');
+       $lots = Lot::all();
+        return view('user.home',compact('lots'));
     }
 
     public function panduan()
@@ -111,7 +112,32 @@ class PenggunaController extends Controller
     }
 
     public function akun(){
-        return view('user.akun');
+        $sale= Sale::where('user_id',Auth::user()->id)->get();
+        // return $sale;
+        return view('user.akun',compact('sale'));
+    }
+    
+    public function bayar(){
+        $sale= Sale::where('user_id',Auth::user()->id)->get();
+        //return $sale;
+         return view('user.bayar',compact('sale'));
+    }   
+    public function bayarStore(Request $request){
+        $payment = Payment::create([
+            'pay_type'  => $request->pay_type,
+            'amount'    => $request->amount,
+            'date'      => $request->date,
+            'proof'     => $request->proof,
+            'bank_id'   => $request->bank_id,
+            'status'    => 'Menunggu persetujuan',
+            'sale_id'   => $request->sale_id,
+        ]);
+        $sale = Sale::find($payment->sale_id);
+ 
+        $sale->status = 'Proses pembayaran';
+        
+        $sale->save();
+        return redirect()->route('akun');
     }
     public function daftar(){
         return view('user.register');
@@ -129,6 +155,8 @@ class PenggunaController extends Controller
         $user->assignRole('User');
         return redirect()->route('daftar')->with('alert-success', 'Berhasil Register.');
     }
+
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([

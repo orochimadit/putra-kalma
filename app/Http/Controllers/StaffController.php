@@ -85,7 +85,7 @@ class StaffController extends Controller
             'name'      => $request->name,
             'email'     => $request->email,
             'phone_number' => $request->phone_number,
-            'address'       => $request->address
+            'address'       => $request->address    
         ]);
         return redirect()->route('staff.index')->with('alert-success', 'Staff berhasil diubah.');
     }

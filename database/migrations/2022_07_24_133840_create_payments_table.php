@@ -19,11 +19,12 @@ class CreatePaymentsTable extends Migration
             $table->string('amount');
             $table->date('date');
             $table->string('proof');
-            $table->string('bank_name');
+            $table->unsignedBigInteger('bank_id');
             $table->string('status');
             $table->unsignedBigInteger('sale_id');
             $table->timestamps();
             $table->foreign('sale_id')->references('id')->on('sales')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('bank_id')->references('id')->on('banks')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

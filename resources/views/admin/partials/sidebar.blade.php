@@ -20,7 +20,7 @@
           <li class="text-muted menu-title">Navigation</li>
 
           <li>
-            <a href="dashboard.php?page=home"><i class="ti-home"></i> <span> Dashboard </span></a>
+            <a href="{{route('dashboard')}}"><i class="ti-home"></i> <span> Dashboard </span></a>
 
           </li>
 
@@ -37,7 +37,7 @@
           </li>
 
           <li class="has_sub">
-            <a href="dashboard.php?page=transaksi" class="waves-effect"><i class="ti-import"></i> <span> Transaksi Masuk </span> </a>
+            <a href="{{route('sales.index')}}" class="waves-effect"><i class="ti-import"></i> <span> Transaksi Masuk </span> </a>
           </li>
 
           <li class="has_sub">

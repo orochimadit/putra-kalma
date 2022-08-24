@@ -45,14 +45,14 @@
                 </ul>
               </li>
             </li>
-            <li><a href="index.php?page=kpr">KPR</a></li>
+            <li><a href="{{route('kpr')}}">KPR</a></li>
             <li><a href="{{route('panduan')}}">Panduan</a></li>
             <li><a href="{{route('profile')}}">Profil Perusahaan</a></li>
             <li><a href="{{route('contact')}}">Dukungan</a></li>
           
 
             @auth
-            <li><a href="index.php?page=akun">Akun</i></a></li>
+            <li><a href="{{route('akun')}}">Akun</i></a></li>
             <li >
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

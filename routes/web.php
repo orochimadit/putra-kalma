@@ -6,6 +6,7 @@ use App\Http\Controllers\HousingController;
 use App\Http\Controllers\LotController;
 use App\Http\Controllers\KprController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\DashboardController;
 /*
@@ -46,6 +47,7 @@ Route::resource('kprs',KprController::class);
 Route::resource('banks',BankController::class);
 Route::resource('staff',StaffController::class);
 Route::resource('konsumen',KonsumenController::class);
+Route::resource('sales',SaleController::class);
 // Route::resource('bank', BankController::class);
 Auth::routes();
 Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
@@ -63,5 +65,7 @@ Route::get('/invoice', [App\Http\Controllers\PenggunaController::class, 'invoice
 Route::get('/akun', [App\Http\Controllers\PenggunaController::class, 'akun'])->name('akun');
 Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
 Route::get('/daftar', [App\Http\Controllers\PenggunaController::class, 'daftar'])->name('daftar');
+Route::get('/bayar', [App\Http\Controllers\PenggunaController::class, 'bayar'])->name('bayar');
+Route::post('/bayar', [App\Http\Controllers\PenggunaController::class, 'bayarStore'])->name('bayarStore');
 Route::post('/daftar', [App\Http\Controllers\PenggunaController::class, 'daftarStore'])->name('daftarStore');
 Route::post('/authenticate', [App\Http\Controllers\PenggunaController::class, 'authenticate'])->name('authenticate');
