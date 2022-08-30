@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Sale;
 use App\Http\Requests\StoreDevelopmentProgressRequest;
 use App\Http\Requests\UpdateDevelopmentProgressRequest;
+use Carbon\Carbon;
 
 class DevelopmentProgressController extends Controller
 {
@@ -46,7 +47,16 @@ class DevelopmentProgressController extends Controller
      */
     public function store(StoreDevelopmentProgressRequest $request)
     {
-        //
+        DevelopmentProgress::Create([
+            'step'   => $request->step,
+             'progress_date' => Carbon::createFromFormat('d-m-Y', $request->progress_date),
+             'target_completed'    => Carbon::createFromFormat('d-m-Y', $request->target_completed),
+             'start_development' => Carbon::createFromFormat('d-m-Y', $request->start_development),
+             'progress' => $request->progress,
+             'sale_id' => $request->sale_id,
+             'user_id' => $request->user_id
+         ]);
+         return redirect()->route('development-progress.index')->with('alert-success', 'Progress Pembangunan Berhasil ditambah.');
     }
 
     /**
@@ -68,7 +78,15 @@ class DevelopmentProgressController extends Controller
      */
     public function edit(DevelopmentProgress $developmentProgress)
     {
-        //
+        $developmentProgresses = DevelopmentProgress::all();
+        $users = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'User');
+            }
+        )->get();
+        $sales = Sale::all();
+        // return $users;
+        return view('admin.progress.edit',compact('developmentProgresses','users','sales','developmentProgress'));
     }
 
     /**
@@ -81,6 +99,18 @@ class DevelopmentProgressController extends Controller
     public function update(UpdateDevelopmentProgressRequest $request, DevelopmentProgress $developmentProgress)
     {
         //
+
+        $developmentProgress->update([
+            'step'   => $request->step,
+            'progress_date' => Carbon::createFromFormat('d-m-Y', $request->progress_date),
+            'target_completed'    => Carbon::createFromFormat('d-m-Y', $request->target_completed),
+            'start_development' => Carbon::createFromFormat('d-m-Y', $request->start_development),
+            'progress' => $request->progress,
+            'sale_id' => $request->sale_id,
+            'user_id' => $request->user_id
+        ]);
+
+        return redirect()->route('development-progress.index')->with('alert-success', 'Progress Pembangunan berhasil diubah.');
     }
 
     /**

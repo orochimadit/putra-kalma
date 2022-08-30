@@ -115,7 +115,13 @@ class PenggunaController extends Controller
     public function akun(){
         $sale= Sale::where('user_id',Auth::user()->id)->get();
         // return $sale;
-        return view('user.akun',compact('sale'));
+        $payments = Payment::whereHas(
+            'sale', function($q){
+                $q->where('user_id', Auth::user()->id);
+            }
+        )->get();
+        // $sale= Sale::where('user_id',Auth::user()->id)->get();
+        return view('user.akun',compact('sale','payments'));
     }
     
     public function bayar(){

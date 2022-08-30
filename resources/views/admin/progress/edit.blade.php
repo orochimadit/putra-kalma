@@ -21,8 +21,9 @@
         <div class="card-box">
           <h4 class="m-t-0 header-title"><b>Masukan Progres Pembangunan</b></h4>
           <p class="text-muted m-b-30 font-13"></p>
-          <form action="{{route('development-progress.store')}}" method="post">
+          <form action="{{route('development-progress.update',$developmentProgress->id)}}" method="post">
           @csrf  
+          @method('PUT')
           <div class="row">
               <div class="col-md-6 form-horizontal">   
              
@@ -47,7 +48,7 @@
                 <select name="sale_id" class="form-control">
                   <option value="0">Pilih Data</option>
                   @foreach($sales as $value)
-                    <option value="{{$value->id}}">{{$value->id}}</option>
+                    <option value="{{$value->id}}" {{$developmentProgress->sale_id == $value->id  ? 'selected' : ''}} >{{$value->id}}</option>
                     @endforeach
                 </select>
               </div>
@@ -59,7 +60,7 @@
                   <option value="0">Pilih Data</option>
                 
                   @foreach($users as $value)
-                    <option value="{{$value->id}}">{{$value->name}}</option>
+                    <option value="{{$value->id}}" {{$developmentProgress->user_id == $value->id  ? 'selected' : ''}}>{{$value->name}}</option>
                     @endforeach
                 
                 </select>
@@ -69,7 +70,7 @@
               <label class="control-label col-sm-2">Tanggal Progres</label>
               <div class="col-sm-8">
                 <div class="input-group">
-                  <input type="text" name="progress_date" class="form-control datepicker-autoclose">
+                  <input type="text" name="progress_date" class="form-control datepicker-autoclose" >
                   <span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
                 </div><!-- input-group -->
               </div>
@@ -90,7 +91,7 @@
             <div class="form-group">
               <label for="range_01" class="col-sm-2 control-label">Progres</label>
               <div class="col-sm-8">
-                <input type="text" name="progress" class="range_01">
+                <input type="text" name="progress" class="range_01" value="{{$developmentProgress->progress}}">
               </div>
             </div>                                     
             <div class="form-group">
@@ -141,7 +142,7 @@
           </tr>
         </thead>
         <tbody>
-        @foreach($developmentProgress as $value)
+        @foreach($developmentProgresses as $value)
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{$value->id}}</td>
@@ -153,7 +154,7 @@
               <td><span class="label label-success">{{$value->progress}} %</span></td>
               <td>{{$value->progress_date}}</td>
               <td>
-                <a href="{{route('development-progress.edit',$value->id)}}" class="btn btn-success waves-effect waves-light"><i class="md md-border-color"></i></a>
+                <a href="" class="btn btn-success waves-effect waves-light" data-target="#edit-progres" data-toggle="modal"><i class="md md-border-color"></i></a>
               </td>
             </tr>
         @endforeach

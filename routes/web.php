@@ -68,6 +68,8 @@ Route::post('/kaveling/pengajuan', [App\Http\Controllers\PenggunaController::cla
 Route::get('/invoice', [App\Http\Controllers\PenggunaController::class, 'invoice'])->name('invoice');
 Route::get('/akun', [App\Http\Controllers\PenggunaController::class, 'akun'])->name('akun');
 Route::get('/login', [App\Http\Controllers\PenggunaController::class, 'login'])->name('login');
+Route::get('/report', [App\Http\Controllers\DashboardController::class, 'report'])->name('report');
+Route::get('/progress-rep', [App\Http\Controllers\DashboardController::class, 'progressRep'])->name('progress-rep');
 Route::get('/daftar', [App\Http\Controllers\PenggunaController::class, 'daftar'])->name('daftar');
 Route::get('/bayar', [App\Http\Controllers\PenggunaController::class, 'bayar'])->name('bayar');
 Route::post('/bayar', [App\Http\Controllers\PenggunaController::class, 'bayarStore'])->name('bayarStore');

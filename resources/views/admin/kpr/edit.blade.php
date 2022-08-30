@@ -33,7 +33,7 @@
                                     <select name="bank_id" class="form-control select2-show-search" data-placeholder="Pilih bank">
                                         <option label="Pilih Bank"></option>
                                         @foreach($banks as $item)
-                                        <option value="{{$item->id}}" {{$kpr->bank_id == $item->id  ? 'selected' : ''}}>{{$item->name}}</option>
+                                        <option value="{{$item->id}}" {>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

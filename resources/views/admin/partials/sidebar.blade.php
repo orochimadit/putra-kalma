@@ -45,14 +45,14 @@
           </li>
 
           <li class="has_sub">
-            <a href="#" class="waves-effect"><i class="ti-archive"></i> <span> Laporan </span> </a>
+            <a href="{{route('report')}}" class="waves-effect"><i class="ti-archive"></i> <span> Laporan </span> </a>
           </li>
 
+          <!-- <li class="has_sub">
+            <a href="{{route('sales.index')}}" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Penjualan </span> </a>
+          </li> -->
           <li class="has_sub">
-            <a href="#" class="waves-effect"><i class="ti-shopping-cart"></i> <span> Penjualan </span> </a>
-          </li>
-          <li class="has_sub">
-            <a href="#" class="waves-effect"><i class="ti-home"></i> <span>Progres Pembagunan</span> </a>
+            <a href="{{route('development-progress.index')}}" class="waves-effect"><i class="ti-home"></i> <span>Progres Pembagunan</span> </a>
           </li>
 
 
